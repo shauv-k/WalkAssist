@@ -1,81 +1,51 @@
 # Walkable Path Detection and Audio Navigation System
 
-A real-time semantic segmentation system that detects walkable areas from camera input and provides directional audio guidance for visually impaired users.
-
-## Demo
+A real-time computer vision system designed to help visually impaired users navigate outdoor environments. The system identifies walkable regions from a camera feed, determines a suitable direction to move, and provides simple audio instructions.
 
 ![Real-Time Demo](assets/demo.gif)
 
-## Overview
+## Working Pipeline
 
-The system uses semantic segmentation to identify walkable regions in street scenes and converts them into simple navigation commands: **LEFT, RIGHT, FORWARD, or STOP**.
+The system processes a street-level image through several stages: the raw dataset annotations are first converted into pixel-wise masks, the segmentation model is trained on these masks, and the resulting predictions are then converted into walkability information. This walkability information is used to determine a suitable path and generate audio guidance.
 
-It combines a deep learning segmentation model with a custom walkability mapping and navigation algorithm.
+![Working Pipeline](assets/pipeline.png)
 
-## Pipeline
+## Data Preprocessing
 
-**Input Image → Semantic Segmentation → Walkability Map → Navigation → Audio Guidance**
+The Mapillary Vistas dataset provides street images along with JSON annotations describing the objects and surfaces present in each image. `meta.json` provides the class definitions, while each image's `annotation.json` contains polygon coordinates for its labelled regions.
 
-![Pipeline](assets/pipeline.png)
+These polygons are converted into pixel-wise segmentation masks. The original dataset class IDs are then mapped to a compact set of class IDs that can be used by the segmentation model. Each resulting image is paired with its corresponding mask to create the training data.
 
-## Dataset
+This preprocessing gives the model a consistent pixel-level label for every part of the image and also allows the same segmentation output to later be interpreted in terms of walkability. :contentReference[oaicite:1]{index=1} :contentReference[oaicite:2]{index=2}
 
-The project uses the **Mapillary Vistas** dataset containing 25,000+ high-resolution street-level images with 150+ semantic classes.
+## Model & Training
 
-The dataset annotations are converted into compact class IDs and used to train the segmentation model.
+We use **DeepLabv3 with a ResNet-50 backbone** for semantic segmentation. The model takes an RGB image and predicts the semantic class of each pixel. The project uses PyTorch and TorchVision, with a custom dataset class responsible for loading the processed image-mask pairs.
 
-## Model
+The model is trained as a multi-class segmentation problem using **Cross Entropy Loss** and the **Adam optimizer**. After training, the model can produce a semantic segmentation mask for each input frame, identifying surfaces such as sidewalks, roads, grass, and other objects. :contentReference[oaicite:3]{index=3}
 
-- **Architecture:** DeepLabv3 with ResNet-50 backbone
-- **Framework:** PyTorch / TorchVision
-- **Input:** 512 × 512 RGB images
-- **Loss:** Cross Entropy
-- **Optimizer:** Adam
+## Mask Processing & Walkability
 
-## Walkability Mapping
+The segmentation output tells us what each pixel represents, but not whether that region is suitable for walking. To bridge this gap, each semantic class is assigned a walkability score between 0 and 1.
 
-Semantic classes are assigned a **walkability score between 0 and 1**.
+For example, sidewalks are given a high walkability score, roads a lower score, while objects such as vehicles, walls, and poles are treated as non-walkable. These scores are used to create a walkability map, which is then thresholded into a binary mask separating walkable and non-walkable regions.
 
-For example:
-
-- Sidewalk → 1.0
-- Road → 0.7
-- Grass → 0.3
-- Obstacles such as vehicles, walls and poles → 0
-
-This mapping can be changed without retraining the segmentation model.
-
-## Navigation
-
-The predicted walkable regions are converted into a binary mask. Perspective weighting gives greater importance to areas closer to the user.
-
-A weighted centroid is then used to determine whether the user should move **LEFT, RIGHT, or FORWARD**.
-
-A safety check on the immediate path can override the forward command and produce **STOP** when necessary.
-
-## Results
+This binary mask is used both for the visual overlay and as the input to the navigation logic. An important part of the design is that the walkability mapping is separate from the trained segmentation model, so the definition of what is considered walkable can be changed without retraining the model. :contentReference[oaicite:4]{index=4}
 
 ![Walkability Overlay](assets/overlay.png)
 
-The system produces a walkability overlay and real-time directional guidance from video input.
+## Navigation
 
-## Audio Guidance
+The system gives greater importance to regions near the bottom of the frame because they represent areas closer to the user. It calculates the centre of the weighted walkable region and compares it with the centre of the camera view.
 
-The navigation commands are converted into speech using **pyttsx3**, allowing the system to provide offline audio instructions such as:
+If the walkable region is shifted to the left or right, the corresponding direction is selected. If it is centred, the system indicates forward movement.
 
-`LEFT` · `RIGHT` · `FORWARD` · `STOP`
+A separate safety check examines the bottom-centre region directly in front of the user. If that region is not walkable, the system avoids giving a forward instruction and instead looks for an available path to the left or right. If no suitable path is available, it outputs **STOP**. :contentReference[oaicite:5]{index=5}
 
-## Tech Stack
+## Audio Cues
 
-Python · PyTorch · TorchVision · OpenCV · NumPy · Matplotlib · pyttsx3 · Mapillary Vistas
+The navigation decision is converted into simple spoken instructions using the offline `pyttsx3` text-to-speech engine. The system provides four basic cues:
 
-## Future Improvements
+**LEFT · RIGHT · FORWARD · STOP**
 
-- Mobile deployment
-- Depth information
-- Haptic feedback
-- Lightweight models for real-time deployment
-
-## Authors
-
-Shauvik Gogoi and team
+To avoid continuously repeating the same instruction, audio output is rate-limited and triggered when the direction changes or when a minimum time interval has passed. :contentReference[oaicite:6]{index=6}
