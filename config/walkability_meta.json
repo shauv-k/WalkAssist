@@ -1,0 +1,746 @@
+[
+  {
+    "title": "bird",
+    "id": 6479238,
+    "color": "#A52A2A",
+    "walkability": 0
+  },
+  {
+    "title": "ground animal",
+    "id": 6479239,
+    "color": "#00C000",
+    "walkability": 0
+  },
+  {
+    "title": "ambiguous barrier",
+    "id": 6479240,
+    "color": "#FAAA1F",
+    "walkability": 0
+  },
+  {
+    "title": "concrete block",
+    "id": 6479241,
+    "color": "#FAAA20",
+    "walkability": 0
+  },
+  {
+    "title": "curb",
+    "id": 6479242,
+    "color": "#C4C4C4",
+    "walkability": 1
+  },
+  {
+    "title": "fence",
+    "id": 6479243,
+    "color": "#BE9999",
+    "walkability": 0
+  },
+  {
+    "title": "guard rail",
+    "id": 6479244,
+    "color": "#B4A5B4",
+    "walkability": 0
+  },
+  {
+    "title": "barrier",
+    "id": 6479245,
+    "color": "#5A7896",
+    "walkability": 0
+  },
+  {
+    "title": "road median",
+    "id": 6479246,
+    "color": "#FAAA21",
+    "walkability": 1
+  },
+  {
+    "title": "road side",
+    "id": 6479247,
+    "color": "#FAAA22",
+    "walkability": 1
+  },
+  {
+    "title": "lane separator",
+    "id": 6479248,
+    "color": "#808080",
+    "walkability": 0
+  },
+  {
+    "title": "temporary barrier",
+    "id": 6479249,
+    "color": "#FAAA23",
+    "walkability": 0
+  },
+  {
+    "title": "wall",
+    "id": 6479250,
+    "color": "#66669C",
+    "walkability": 0
+  },
+  {
+    "title": "bike lane",
+    "id": 6479251,
+    "color": "#8040FF",
+    "walkability": 1
+  },
+  {
+    "title": "crosswalk - plain",
+    "id": 6479252,
+    "color": "#8C8CC8",
+    "walkability": 1
+  },
+  {
+    "title": "curb cut",
+    "id": 6479253,
+    "color": "#AAAAAA",
+    "walkability": 1
+  },
+  {
+    "title": "driveway",
+    "id": 6479254,
+    "color": "#FAAA24",
+    "walkability": 1
+  },
+  {
+    "title": "parking",
+    "id": 6479255,
+    "color": "#FAAAA0",
+    "walkability": 1
+  },
+  {
+    "title": "parking aisle",
+    "id": 6479256,
+    "color": "#FAAA25",
+    "walkability": 1
+  },
+  {
+    "title": "pedestrian area",
+    "id": 6479257,
+    "color": "#606060",
+    "walkability": 1
+  },
+  {
+    "title": "rail track",
+    "id": 6479258,
+    "color": "#E6968C",
+    "walkability": 0
+  },
+  {
+    "title": "road",
+    "id": 6479259,
+    "color": "#804080",
+    "walkability": 1
+  },
+  {
+    "title": "road shoulder",
+    "id": 6479260,
+    "color": "#6E6E6E",
+    "walkability": 0
+  },
+  {
+    "title": "service lane",
+    "id": 6479261,
+    "color": "#6E6E6E",
+    "walkability": 1
+  },
+  {
+    "title": "sidewalk",
+    "id": 6479262,
+    "color": "#F423E8",
+    "walkability": 1
+  },
+  {
+    "title": "traffic island",
+    "id": 6479263,
+    "color": "#80C480",
+    "walkability": 1
+  },
+  {
+    "title": "bridge",
+    "id": 6479264,
+    "color": "#966464",
+    "walkability": 0
+  },
+  {
+    "title": "building",
+    "id": 6479265,
+    "color": "#464646",
+    "walkability": 0
+  },
+  {
+    "title": "garage",
+    "id": 6479266,
+    "color": "#969696",
+    "walkability": 0
+  },
+  {
+    "title": "tunnel",
+    "id": 6479267,
+    "color": "#96785A",
+    "walkability": 0
+  },
+  {
+    "title": "person",
+    "id": 6479268,
+    "color": "#DC143C",
+    "walkability": 0
+  },
+  {
+    "title": "person group",
+    "id": 6479269,
+    "color": "#DC143C",
+    "walkability": 0
+  },
+  {
+    "title": "bicyclist",
+    "id": 6479270,
+    "color": "#FF0000",
+    "walkability": 0
+  },
+  {
+    "title": "motorcyclist",
+    "id": 6479271,
+    "color": "#FF0064",
+    "walkability": 0
+  },
+  {
+    "title": "other rider",
+    "id": 6479272,
+    "color": "#FF00C8",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - dashed line",
+    "id": 6479273,
+    "color": "#FFFFFF",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - straight line",
+    "id": 6479274,
+    "color": "#FFFFFF",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - zigzag line",
+    "id": 6479275,
+    "color": "#FAAA1D",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - ambiguous",
+    "id": 6479276,
+    "color": "#FAAA1C",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - arrow (left)",
+    "id": 6479277,
+    "color": "#FAAA1A",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - arrow (other)",
+    "id": 6479278,
+    "color": "#FAAA19",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - arrow (right)",
+    "id": 6479279,
+    "color": "#FAAA18",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - arrow (split left or straight)",
+    "id": 6479280,
+    "color": "#FAAA16",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - arrow (split right or straight)",
+    "id": 6479281,
+    "color": "#FAAA15",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - arrow (straight)",
+    "id": 6479282,
+    "color": "#FAAA14",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - crosswalk",
+    "id": 6479283,
+    "color": "#FFFFFF",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - give way (row)",
+    "id": 6479284,
+    "color": "#FAAA13",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - give way (single)",
+    "id": 6479285,
+    "color": "#FAAA12",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - hatched (chevron)",
+    "id": 6479286,
+    "color": "#FAAA0C",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - hatched (diagonal)",
+    "id": 6479287,
+    "color": "#FAAA0B",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - other",
+    "id": 6479288,
+    "color": "#FFFFFF",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - stop line",
+    "id": 6479289,
+    "color": "#FFFFFF",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - symbol (bicycle)",
+    "id": 6479290,
+    "color": "#FAAA10",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - symbol (other)",
+    "id": 6479291,
+    "color": "#FAAA0F",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking - text",
+    "id": 6479292,
+    "color": "#FAAA0F",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking (only) - dashed line",
+    "id": 6479293,
+    "color": "#FFFFFF",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking (only) - crosswalk",
+    "id": 6479294,
+    "color": "#FFFFFF",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking (only) - other",
+    "id": 6479295,
+    "color": "#FFFFFF",
+    "walkability": 0
+  },
+  {
+    "title": "lane marking (only) - test",
+    "id": 6479296,
+    "color": "#FFFFFF",
+    "walkability": 0
+  },
+  {
+    "title": "mountain",
+    "id": 6479297,
+    "color": "#40AA40",
+    "walkability": 0
+  },
+  {
+    "title": "sand",
+    "id": 6479298,
+    "color": "#E6A032",
+    "walkability": 0
+  },
+  {
+    "title": "sky",
+    "id": 6479299,
+    "color": "#4682B4",
+    "walkability": 0
+  },
+  {
+    "title": "snow",
+    "id": 6479300,
+    "color": "#BEFFFF",
+    "walkability": 0
+  },
+  {
+    "title": "terrain",
+    "id": 6479301,
+    "color": "#98FB98",
+    "walkability": 1
+  },
+  {
+    "title": "vegetation",
+    "id": 6479302,
+    "color": "#6B8E23",
+    "walkability": 0
+  },
+  {
+    "title": "water",
+    "id": 6479303,
+    "color": "#00AA1E",
+    "walkability": 0
+  },
+  {
+    "title": "banner",
+    "id": 6479304,
+    "color": "#FFFF80",
+    "walkability": 0
+  },
+  {
+    "title": "bench",
+    "id": 6479305,
+    "color": "#FA001E",
+    "walkability": 0
+  },
+  {
+    "title": "bike rack",
+    "id": 6479306,
+    "color": "#648CB4",
+    "walkability": 0
+  },
+  {
+    "title": "catch basin",
+    "id": 6479307,
+    "color": "#DC8080",
+    "walkability": 0
+  },
+  {
+    "title": "cctv camera",
+    "id": 6479308,
+    "color": "#DE2828",
+    "walkability": 0
+  },
+  {
+    "title": "fire hydrant",
+    "id": 6479309,
+    "color": "#64AA1E",
+    "walkability": 0
+  },
+  {
+    "title": "junction box",
+    "id": 6479310,
+    "color": "#282828",
+    "walkability": 0
+  },
+  {
+    "title": "mailbox",
+    "id": 6479311,
+    "color": "#212121",
+    "walkability": 0
+  },
+  {
+    "title": "manhole",
+    "id": 6479312,
+    "color": "#6480A0",
+    "walkability": 0
+  },
+  {
+    "title": "parking meter",
+    "id": 6479313,
+    "color": "#1414FF",
+    "walkability": 0
+  },
+  {
+    "title": "phone booth",
+    "id": 6479314,
+    "color": "#8E0000",
+    "walkability": 0
+  },
+  {
+    "title": "pothole",
+    "id": 6479315,
+    "color": "#466496",
+    "walkability": 0
+  },
+  {
+    "title": "signage - advertisement",
+    "id": 6479316,
+    "color": "#FAAB1E",
+    "walkability": 0
+  },
+  {
+    "title": "signage - ambiguous",
+    "id": 6479317,
+    "color": "#FAAC1E",
+    "walkability": 0
+  },
+  {
+    "title": "signage - back",
+    "id": 6479318,
+    "color": "#FAAD1E",
+    "walkability": 0
+  },
+  {
+    "title": "signage - information",
+    "id": 6479319,
+    "color": "#FAAE1E",
+    "walkability": 0
+  },
+  {
+    "title": "signage - other",
+    "id": 6479320,
+    "color": "#FAAF1E",
+    "walkability": 0
+  },
+  {
+    "title": "signage - store",
+    "id": 6479321,
+    "color": "#FAB01E",
+    "walkability": 0
+  },
+  {
+    "title": "street light",
+    "id": 6479322,
+    "color": "#D2AA64",
+    "walkability": 0
+  },
+  {
+    "title": "pole",
+    "id": 6479323,
+    "color": "#999999",
+    "walkability": 0
+  },
+  {
+    "title": "pole group",
+    "id": 6479324,
+    "color": "#999999",
+    "walkability": 0
+  },
+  {
+    "title": "traffic sign frame",
+    "id": 6479325,
+    "color": "#808080",
+    "walkability": 0
+  },
+  {
+    "title": "utility pole",
+    "id": 6479326,
+    "color": "#000050",
+    "walkability": 0
+  },
+  {
+    "title": "traffic cone",
+    "id": 6479327,
+    "color": "#D23C3C",
+    "walkability": 0
+  },
+  {
+    "title": "traffic light - general (single)",
+    "id": 6479328,
+    "color": "#FAAA1E",
+    "walkability": 0
+  },
+  {
+    "title": "traffic light - pedestrians",
+    "id": 6479329,
+    "color": "#FAAA1E",
+    "walkability": 0
+  },
+  {
+    "title": "traffic light - general (upright)",
+    "id": 6479330,
+    "color": "#FAAA1E",
+    "walkability": 0
+  },
+  {
+    "title": "traffic light - general (horizontal)",
+    "id": 6479331,
+    "color": "#FAAA1E",
+    "walkability": 0
+  },
+  {
+    "title": "traffic light - cyclists",
+    "id": 6479332,
+    "color": "#FAAA1E",
+    "walkability": 0
+  },
+  {
+    "title": "traffic light - other",
+    "id": 6479333,
+    "color": "#FAAA1E",
+    "walkability": 0
+  },
+  {
+    "title": "traffic sign - ambiguous",
+    "id": 6479334,
+    "color": "#C0C0C0",
+    "walkability": 0
+  },
+  {
+    "title": "traffic sign (back)",
+    "id": 6479335,
+    "color": "#C0C0C0",
+    "walkability": 0
+  },
+  {
+    "title": "traffic sign - direction (back)",
+    "id": 6479336,
+    "color": "#C0C0C0",
+    "walkability": 0
+  },
+  {
+    "title": "traffic sign - direction (front)",
+    "id": 6479337,
+    "color": "#DCDC00",
+    "walkability": 0
+  },
+  {
+    "title": "traffic sign (front)",
+    "id": 6479338,
+    "color": "#DCDC00",
+    "walkability": 0
+  },
+  {
+    "title": "traffic sign - parking",
+    "id": 6479339,
+    "color": "#0000C4",
+    "walkability": 0
+  },
+  {
+    "title": "traffic sign - temporary (back)",
+    "id": 6479340,
+    "color": "#C0C0C0",
+    "walkability": 0
+  },
+  {
+    "title": "traffic sign - temporary (front)",
+    "id": 6479341,
+    "color": "#DCDC00",
+    "walkability": 0
+  },
+  {
+    "title": "trash can",
+    "id": 6479342,
+    "color": "#8C8C14",
+    "walkability": 0
+  },
+  {
+    "title": "bicycle",
+    "id": 6479343,
+    "color": "#770B20",
+    "walkability": 0
+  },
+  {
+    "title": "boat",
+    "id": 6479344,
+    "color": "#9600FF",
+    "walkability": 0
+  },
+  {
+    "title": "bus",
+    "id": 6479345,
+    "color": "#003C64",
+    "walkability": 0
+  },
+  {
+    "title": "car",
+    "id": 6479346,
+    "color": "#00008E",
+    "walkability": 0
+  },
+  {
+    "title": "caravan",
+    "id": 6479347,
+    "color": "#00005A",
+    "walkability": 0
+  },
+  {
+    "title": "motorcycle",
+    "id": 6479348,
+    "color": "#0000E6",
+    "walkability": 0
+  },
+  {
+    "title": "on rails",
+    "id": 6479349,
+    "color": "#005064",
+    "walkability": 0
+  },
+  {
+    "title": "other vehicle",
+    "id": 6479350,
+    "color": "#804040",
+    "walkability": 0
+  },
+  {
+    "title": "trailer",
+    "id": 6479351,
+    "color": "#00006E",
+    "walkability": 0
+  },
+  {
+    "title": "truck",
+    "id": 6479352,
+    "color": "#000046",
+    "walkability": 0
+  },
+  {
+    "title": "vehicle group",
+    "id": 6479353,
+    "color": "#00008E",
+    "walkability": 0
+  },
+  {
+    "title": "wheeled slow",
+    "id": 6479354,
+    "color": "#0000C0",
+    "walkability": 0
+  },
+  {
+    "title": "water valve",
+    "id": 6479355,
+    "color": "#AAAAAA",
+    "walkability": 0
+  },
+  {
+    "title": "car mount",
+    "id": 6479356,
+    "color": "#202020",
+    "walkability": 0
+  },
+  {
+    "title": "dynamic",
+    "id": 6479357,
+    "color": "#6F4A00",
+    "walkability": 0
+  },
+  {
+    "title": "ego vehicle",
+    "id": 6479358,
+    "color": "#780A0A",
+    "walkability": 0
+  },
+  {
+    "title": "ground",
+    "id": 6479359,
+    "color": "#510051",
+    "walkability": 1
+  },
+  {
+    "title": "static",
+    "id": 6479360,
+    "color": "#6F6F00",
+    "walkability": 0
+  },
+  {
+    "title": "unlabeled",
+    "id": 6479361,
+    "color": "#000000",
+    "walkability": 0
+  }
+]
