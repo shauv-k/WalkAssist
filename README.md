@@ -1,51 +1,57 @@
 # Walkable Path Detection and Audio Navigation System
 
-A real-time computer vision system designed to help visually impaired users navigate outdoor environments. The system identifies walkable regions from a camera feed, determines a suitable direction to move, and provides simple audio instructions.
+A real-time computer vision system designed to help visually impaired users navigate outdoor environments. The system uses semantic segmentation to identify walkable areas, determines a suitable direction to move, and provides real-time audio instructions.
 
 ![Real-Time Demo](assets/demo.gif)
 
 ## Working Pipeline
 
-The system processes a street-level image through several stages: the raw dataset annotations are first converted into pixel-wise masks, the segmentation model is trained on these masks, and the resulting predictions are then converted into walkability information. This walkability information is used to determine a suitable path and generate audio guidance.
+The system follows a pipeline of **data preprocessing → model training → segmentation → walkability mapping → navigation → audio guidance**.
 
 ![Working Pipeline](assets/pipeline.png)
 
 ## Data Preprocessing
 
-The Mapillary Vistas dataset provides street images along with JSON annotations describing the objects and surfaces present in each image. `meta.json` provides the class definitions, while each image's `annotation.json` contains polygon coordinates for its labelled regions.
+The project uses the **Mapillary Vistas** dataset, which contains street-level images with detailed annotations. Each image has a corresponding JSON file containing polygon annotations for the objects and surfaces present in the scene.
 
-These polygons are converted into pixel-wise segmentation masks. The original dataset class IDs are then mapped to a compact set of class IDs that can be used by the segmentation model. Each resulting image is paired with its corresponding mask to create the training data.
+These polygon annotations are converted into pixel-wise segmentation masks. The original dataset class IDs are then mapped to compact class IDs so that each pixel has a consistent label that can be used by the segmentation model.
 
-This preprocessing gives the model a consistent pixel-level label for every part of the image and also allows the same segmentation output to later be interpreted in terms of walkability. :contentReference[oaicite:1]{index=1} :contentReference[oaicite:2]{index=2}
+The processed images and masks are loaded as image-mask pairs through a custom PyTorch dataset.
 
 ## Model & Training
 
-We use **DeepLabv3 with a ResNet-50 backbone** for semantic segmentation. The model takes an RGB image and predicts the semantic class of each pixel. The project uses PyTorch and TorchVision, with a custom dataset class responsible for loading the processed image-mask pairs.
+We use **DeepLabv3 with a ResNet-50 backbone** for semantic segmentation. The model learns to classify every pixel in an image according to its semantic class.
 
-The model is trained as a multi-class segmentation problem using **Cross Entropy Loss** and the **Adam optimizer**. After training, the model can produce a semantic segmentation mask for each input frame, identifying surfaces such as sidewalks, roads, grass, and other objects. :contentReference[oaicite:3]{index=3}
+The model is trained using **PyTorch**, with **Cross Entropy Loss** and the **Adam optimizer**. After training, the model takes a new street image and produces a semantic segmentation mask representing the different surfaces and objects in the scene.
 
 ## Mask Processing & Walkability
 
-The segmentation output tells us what each pixel represents, but not whether that region is suitable for walking. To bridge this gap, each semantic class is assigned a walkability score between 0 and 1.
+Semantic segmentation tells us what each part of the scene is, but it does not directly tell us whether that region is suitable for walking.
 
-For example, sidewalks are given a high walkability score, roads a lower score, while objects such as vehicles, walls, and poles are treated as non-walkable. These scores are used to create a walkability map, which is then thresholded into a binary mask separating walkable and non-walkable regions.
+To solve this, each semantic class is assigned a walkability score. For example, sidewalks are considered highly walkable, roads are given a lower score, while objects such as vehicles, walls, and poles are treated as non-walkable.
 
-This binary mask is used both for the visual overlay and as the input to the navigation logic. An important part of the design is that the walkability mapping is separate from the trained segmentation model, so the definition of what is considered walkable can be changed without retraining the model. :contentReference[oaicite:4]{index=4}
+The resulting scores are converted into a binary walkability mask, separating walkable areas from non-walkable areas. This mask is used to generate the visual overlay and is also passed to the navigation system.
 
 ![Walkability Overlay](assets/overlay.png)
 
+The walkability mapping is independent of the trained segmentation model, meaning that the definition of which classes are considered walkable can be changed without retraining the model.
+
 ## Navigation
 
-The system gives greater importance to regions near the bottom of the frame because they represent areas closer to the user. It calculates the centre of the weighted walkable region and compares it with the centre of the camera view.
+The system determines the direction of movement from the detected walkable region.
 
-If the walkable region is shifted to the left or right, the corresponding direction is selected. If it is centred, the system indicates forward movement.
+Areas near the bottom of the frame are given more importance because they are closer to the user. The system then calculates the centre of the weighted walkable region and compares it with the centre of the camera view.
 
-A separate safety check examines the bottom-centre region directly in front of the user. If that region is not walkable, the system avoids giving a forward instruction and instead looks for an available path to the left or right. If no suitable path is available, it outputs **STOP**. :contentReference[oaicite:5]{index=5}
+If the walkable region is towards the left or right, the system gives a corresponding direction. If it is centred, the system indicates **FORWARD**.
+
+A separate safety check examines the area directly in front of the user. If this region is not walkable, the system looks for an alternative path to the left or right. If no suitable path is available, it outputs **STOP**.
 
 ## Audio Cues
 
-The navigation decision is converted into simple spoken instructions using the offline `pyttsx3` text-to-speech engine. The system provides four basic cues:
+The selected navigation direction is converted into speech using the offline `pyttsx3` text-to-speech engine.
+
+The system provides four basic instructions:
 
 **LEFT · RIGHT · FORWARD · STOP**
 
-To avoid continuously repeating the same instruction, audio output is rate-limited and triggered when the direction changes or when a minimum time interval has passed. :contentReference[oaicite:6]{index=6}
+Audio output is rate-limited so that the same instruction is not repeatedly spoken while the user is moving.
